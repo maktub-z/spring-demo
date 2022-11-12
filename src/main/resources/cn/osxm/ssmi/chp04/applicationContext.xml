@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+<!--        default-lazy-init="true">全局懒加载-->
+
+<!--    静态内部类-->
+    <bean id="innerObject" class="cn.osxm.ssmi.chp04.model.OuterClass$InnerClass" scope="singleton"/>
+<!--    静态工厂方法-->
+    <bean id="staticFactoryService" class="cn.osxm.ssmi.chp04.service.StaticFactoryService" factory-method="getInstance" />
+<!--    实例工厂方法-->
+    <bean id="instanceFactory" class="cn.osxm.ssmi.chp04.factory.InstanceFactory" />
+    <bean id="foo" factory-bean="instanceFactory" factory-method="getFooInstance" />
+    <bean id="bar" factory-bean="instanceFactory" factory-method="getBarInstance" />
+
+    <bean id="implCallbackService" class="cn.osxm.ssmi.chp04.callback.ImplCallbackService" lazy-init="true"/>
+
+    <bean id="lazyInitService" class="cn.osxm.ssmi.chp04.callback.CfgCallbackService" lazy-init="true" init-method="init"/>
+<!--    依赖上面懒加载Bean-->
+    <bean id="useLazyService" class="cn.osxm.ssmi.chp04.UseLazyService" >
+        <property name="lazyInitService" ref="lazyInitService" />
+    </bean>
+
+<!--    父bean包含name属性-->
+    <bean id="parentBean" abstract="true"><!--抽象父bean,不会实例化-->
+        <property name="name" value="张三" />
+    </bean>
+    <bean id="childBean" class="cn.osxm.ssmi.chp04.ChildBean" parent="parentBean">
+        <property name="age" value="18"/>
+    </bean>
+
+    <bean id="thirdService" class="cn.osxm.ssmi.chp04.ThirdService"/>
+    <bean id="fourService" class="cn.osxm.ssmi.chp04.FourService"/>
+    <bean id="twoService" class="cn.osxm.ssmi.chp04.TwoService">
+        <constructor-arg ref="thirdService"/>
+        <constructor-arg ref="fourService"/>
+    </bean>
+
+    <bean id="baz" class="cn.osxm.ssmi.com.Baz">
+        <property name="foo" ref="foo"/>
+        <property name="bar" ref="bar"/>
+    </bean>
+
+    <bean id="simpleTypeDepService" class="cn.osxm.ssmi.chp04.SimpleTypeDepService">
+        <constructor-arg index="0" name="iFoo" type="int" value="2" />
+        <constructor-arg index="1" name="sBar" type="java.lang.String" value="Hello World!" />
+    </bean>
+
+    <bean id="simpleTypePropertyDepService" class="cn.osxm.ssmi.chp04.SimpleTypePropertyDepService">
+        <property name="sBar" value="Hello World!" />
+        <property name="iFoo" value="2"/>
+    </bean>
+
+    <bean id="simpleTypePropertyDepService2" class="cn.osxm.ssmi.chp04.SimpleTypePropertyDepService" p:sBar="Hello World!" p:iFoo="2"/>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="properties">
+            <value>
+                jdbc.driver.className=com.mysql.jdbc.Driver
+                jdbc.url=jdbc:mysql://localhost:3306/mydb
+                jdbc.username=root
+                jdbc.password=zxl123
+            </value>
+        </property>
+    </bean>
+    <bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <!--驱动类-->
+        <property name="driverClassName" value="${jdbc.driver.className}"/>
+        <!--数据源地址-->
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+</beans>
