@@ -1,5 +1,6 @@
 package cn.osxm.ssmi.chp04;
 
+import cn.osxm.ssmi.chp02.HelloService;
 import cn.osxm.ssmi.chp04.methodinj.OldEraPeople;
 import cn.osxm.ssmi.chp04.model.Foo;
 import cn.osxm.ssmi.chp04.model.OuterClass;
@@ -38,6 +39,9 @@ public class Chp04Demo {
 
         OldEraPeople oldEraPeople = applicationContext.getBean(OldEraPeople.class);
         System.out.println(oldEraPeople.eat("我"));
+
+        HelloService helloService2 = (HelloService) applicationContext.getBean("helloService");
+        System.out.println(helloService2);
 
         applicationContext.close();
     }

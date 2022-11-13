@@ -6,8 +6,8 @@
 
     <bean id="helloDao" class="cn.osxm.ssmi.chp03.HelloDao"/>
 
-    <bean id="helloService" class="cn.osxm.ssmi.chp03.HelloService">
-        <constructor-arg name="name" value="Spring Ioc Container" />
-        <property name="helloDao" ref="helloDao"/>
-    </bean>
+<!--    <bean id="helloService" class="cn.osxm.ssmi.chp03.HelloService">-->
+<!--        <constructor-arg name="name" value="Spring Ioc Container" />-->
+<!--        <property name="helloDao" ref="helloDao"/>-->
+<!--    </bean>-->
 </beans>

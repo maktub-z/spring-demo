@@ -114,4 +114,10 @@
     <bean id="user1" class="cn.osxm.ssmi.com.User" c:name="Oscar"/>
 
 <!--    <bean id="user2" class="cn.osxm.ssmi.com.User" c:name="Oscar" c:parent-ref="user" p:age="30" p:child-ref="user1"/>-->
+
+    <bean id="helloService" class="cn.osxm.ssmi.chp02.HelloService">
+        <property name="name" value="张三"/>
+    </bean>
+
+    <bean class="cn.osxm.ssmi.chp04.HelloBeanFactoryPostProcessor"/>
 </beans>
