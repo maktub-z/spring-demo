@@ -94,4 +94,7 @@
     <bean id="newEarPeople" class="cn.osxm.ssmi.chp04.methodinj.NewEraPeople"/>
 
     <bean id="bar1" class="cn.osxm.ssmi.chp04.model.Bar" autowire="byName"/>
+
+    <bean id="beanA" class="cn.osxm.ssmi.chp04.BeanAClass" />
+    <bean id="beanB" class="cn.osxm.ssmi.chp04.BeanAClass" depends-on="beanA" />
 </beans>
