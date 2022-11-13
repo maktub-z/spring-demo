@@ -32,6 +32,9 @@ public class Chp04Demo {
         SimpleTypeDepService simpleTypeDepService = applicationContext.getBean(SimpleTypeDepService.class);
         simpleTypeDepService.fooBar();
 
+        OutBeanClass outBeanClass = applicationContext.getBean(OutBeanClass.class);
+        System.out.println("内部Bean注入：" + outBeanClass);
+
         applicationContext.close();
     }
 }

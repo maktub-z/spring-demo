@@ -73,4 +73,15 @@
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
     </bean>
+
+    <!-- Bean 定义-->
+    <bean id="outBeanClass" class="cn.osxm.ssmi.chp04.OutBeanClass">
+        <constructor-arg><!--构造参数注入依赖-->
+            <!--内部 Bean 定义-->
+            <bean class="cn.osxm.ssmi.chp04.InnerBeanClass">
+                <!--内部 Bean 属性-->
+                <property name="name" value="Inner Bean Class"/>
+            </bean>
+        </constructor-arg>
+    </bean>
 </beans>
