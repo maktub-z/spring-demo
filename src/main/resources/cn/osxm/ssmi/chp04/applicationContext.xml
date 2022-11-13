@@ -84,4 +84,11 @@
             </bean>
         </constructor-arg>
     </bean>
+
+    <bean id="oldEraPeople" class="cn.osxm.ssmi.chp04.methodinj.OldEraPeople">
+        <replaced-method name="eat" replacer="newEarPeople">
+            <arg-type>String</arg-type>
+        </replaced-method>
+    </bean>
+    <bean id="newEarPeople" class="cn.osxm.ssmi.chp04.methodinj.NewEraPeople"/>
 </beans>
