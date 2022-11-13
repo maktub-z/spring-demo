@@ -1,5 +1,8 @@
 package cn.osxm.ssmi.com;
 
+import lombok.Data;
+
+@Data
 public class User {
     private String name;
     private User user;
