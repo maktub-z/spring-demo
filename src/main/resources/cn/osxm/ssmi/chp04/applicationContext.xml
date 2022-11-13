@@ -97,4 +97,13 @@
 
     <bean id="beanA" class="cn.osxm.ssmi.chp04.BeanAClass" />
     <bean id="beanB" class="cn.osxm.ssmi.chp04.BeanAClass" depends-on="beanA" />
+
+    <bean id="beanC" class="cn.osxm.ssmi.chp04.BeanCClass">
+        <property name="beanD" ref="beanD"/>
+    </bean>
+
+    <bean id="beanD" class="cn.osxm.ssmi.chp04.BeanDClass">
+        <constructor-arg ref="beanC"/>
+    </bean>
+
 </beans>
