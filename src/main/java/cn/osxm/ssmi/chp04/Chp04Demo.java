@@ -1,5 +1,7 @@
 package cn.osxm.ssmi.chp04;
 
+import cn.osxm.ssmi.chp02.HelloService;
+import cn.osxm.ssmi.chp04.methodinj.OldEraPeople;
 import cn.osxm.ssmi.chp04.model.Foo;
 import cn.osxm.ssmi.chp04.model.OuterClass;
 import cn.osxm.ssmi.chp04.callback.ImplCallbackService;
@@ -31,6 +33,15 @@ public class Chp04Demo {
 
         SimpleTypeDepService simpleTypeDepService = applicationContext.getBean(SimpleTypeDepService.class);
         simpleTypeDepService.fooBar();
+
+        OutBeanClass outBeanClass = applicationContext.getBean(OutBeanClass.class);
+        System.out.println("内部Bean注入：" + outBeanClass);
+
+        OldEraPeople oldEraPeople = applicationContext.getBean(OldEraPeople.class);
+        System.out.println(oldEraPeople.eat("我"));
+
+        HelloService helloService2 = (HelloService) applicationContext.getBean("helloService");
+        System.out.println(helloService2);
 
         applicationContext.close();
     }
