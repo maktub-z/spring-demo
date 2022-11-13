@@ -120,4 +120,6 @@
     </bean>
 
     <bean class="cn.osxm.ssmi.chp04.HelloBeanFactoryPostProcessor"/>
+
+    <bean class="cn.osxm.ssmi.chp04.HelloBeanPostProcessor"/>
 </beans>
