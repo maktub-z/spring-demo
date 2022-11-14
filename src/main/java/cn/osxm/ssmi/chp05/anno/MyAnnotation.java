@@ -1,4 +1,4 @@
-package cn.osxm.ssmi.chp05;
+package cn.osxm.ssmi.chp05.anno;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
