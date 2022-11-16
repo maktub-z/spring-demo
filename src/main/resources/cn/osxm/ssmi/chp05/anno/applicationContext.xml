@@ -12,4 +12,8 @@
     <!--包扫描配置-->
     <context:component-scan base-package="cn.osxm.ssmi.chp05.anno"/><!--开启包扫描后，会默认注册Common，Autowired，Required三种AnnotationBeanPostProcessor-->
 
+    <bean id="foo1" class="cn.osxm.ssmi.com.Foo"/><!--定义一个Foo类的bean-->
+    <bean id="requiredAnno" class="cn.osxm.ssmi.chp05.anno.RequiredAnno">
+        <property name="foo" ref="foo1"/><!--将依赖项注入-->
+    </bean>
 </beans>
