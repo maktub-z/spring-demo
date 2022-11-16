@@ -16,4 +16,6 @@
     <bean id="requiredAnno" class="cn.osxm.ssmi.chp05.anno.RequiredAnno">
         <property name="foo" ref="foo1"/><!--将依赖项注入-->
     </bean>
+
+    <bean id="autowiredUsage" class="cn.osxm.ssmi.chp05.anno.AutowiredUsage"/>
 </beans>
