@@ -5,5 +5,5 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @Import({AppConfig.class})
-public class uImportAnnoConfig {
+public class ImportAnnoConfig {
 }
