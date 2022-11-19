@@ -3,6 +3,7 @@ package cn.osxm.ssmi.com;
 import cn.osxm.ssmi.chp04.model.Bar;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Description;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +20,13 @@ public class Foo {
     public User user(Foo foo) {
         System.out.println("@Bean 注解方法的参数是依赖注入对象：" + foo);
         return new User("Oscar");
+    }
+
+    @Bean       //组件注解
+    //如果
+    @Primary
+    public User secondUser() {
+        return new User("second");
     }
 
 }

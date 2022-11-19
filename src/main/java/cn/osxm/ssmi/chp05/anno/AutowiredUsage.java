@@ -1,9 +1,11 @@
 package cn.osxm.ssmi.chp05.anno;
 
 import cn.osxm.ssmi.chp04.model.Bar;
+import cn.osxm.ssmi.chp05.Notice;
 import cn.osxm.ssmi.com.Baz;
 import cn.osxm.ssmi.com.Foo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.annotation.Nullable;
 import java.util.Map;
@@ -41,4 +43,8 @@ public class AutowiredUsage {
     public void setFoo(@Nullable Foo foo) {     //使用@Nullable检查非空
         this.foo = foo;
     }
+
+    @Autowired
+    @Qualifier("mailNotice")
+    private Notice notice;
 }
