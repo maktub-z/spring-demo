@@ -1,5 +1,6 @@
 package cn.osxm.ssmi.chp05.anno;
 
+import cn.osxm.ssmi.chp04.Chp04Demo;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.lang.annotation.Annotation;
@@ -15,6 +16,8 @@ public class MyAnnotationDemo {
 
     public static void main(String[] args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml", MyAnnotationDemo.class);
+
+        Object user = applicationContext.getBean("userByMethod");
 
         MyAnnotationDemo myAnnotationDemo = new MyAnnotationDemo();
         //获取使用在类上的自定义注解

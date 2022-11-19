@@ -10,7 +10,7 @@
 <!--    <context:annotation-config/>&lt;!&ndash;开启注解配置，包含了Common，Autowired，Required，Presistence四种AnnotationBeanPostProcessor&ndash;&gt;-->
 
     <!--包扫描配置-->
-    <context:component-scan base-package="cn.osxm.ssmi.chp05.anno"><!--开启包扫描后，会默认注册Common，Autowired，Required三种AnnotationBeanPostProcessor-->
+    <context:component-scan base-package="cn.osxm.ssmi"><!--开启包扫描后，会默认注册Common，Autowired，Required三种AnnotationBeanPostProcessor-->
         <!--排除某种类型的注解-->
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         <!--根据类的类型进行过滤-->
