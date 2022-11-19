@@ -5,6 +5,7 @@ import cn.osxm.ssmi.com.Baz;
 import cn.osxm.ssmi.com.Foo;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.Set;
 
@@ -34,5 +35,10 @@ public class AutowiredUsage {
     @Autowired                          //使用在一般方法中
     public void myInitBar(Bar bar) {
         this.bar = bar;
+    }
+
+    @Autowired(required = false)            //依赖检查
+    public void setFoo(@Nullable Foo foo) {     //使用@Nullable检查非空
+        this.foo = foo;
     }
 }
