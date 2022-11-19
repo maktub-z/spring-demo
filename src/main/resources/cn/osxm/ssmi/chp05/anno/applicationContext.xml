@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--公共注解的处理类的 Bean 定义-->
+<!--    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"></bean>-->
+
+<!--    <context:annotation-config/>&lt;!&ndash;开启注解配置，包含了Common，Autowired，Required，Presistence四种AnnotationBeanPostProcessor&ndash;&gt;-->
+
+    <!--包扫描配置-->
+    <context:component-scan base-package="cn.osxm.ssmi"><!--开启包扫描后，会默认注册Common，Autowired，Required三种AnnotationBeanPostProcessor-->
+        <!--排除某种类型的注解-->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <!--根据类的类型进行过滤-->
+        <context:exclude-filter type="assignable" expression="cn.osxm.ssmi.com.anno.UserController"/>
+        <!--根据正则表达式过滤-->
+        <context:exclude-filter type="regex" expression="com.osxm.ssmi.com.anno.*"/>
+        <!--根据AspectJ 表达式过滤-->
+        <context:exclude-filter type="aspectj" expression="com.osxm..*Controller"/>
+        <!--自定义过滤器的配置-->
+        <context:exclude-filter type="custom" expression="cn.osxm.ssmi.chp05.anno.MyTypeFilter"/>
+    </context:component-scan>
+
+<!--    &lt;!&ndash;包扫描配置&ndash;&gt;-->
+<!--    <context:component-scan base-package="cn.osxm.ssmi.chp05.anno" use-default-filters="false">&lt;!&ndash;开启包扫描后，会默认注册Common，Autowired，Required三种AnnotationBeanPostProcessor&ndash;&gt;-->
+<!--        &lt;!&ndash;包含某种类型的注解&ndash;&gt;f-->
+<!--        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>-->
+<!--    </context:component-scan>-->
+    <bean id="foo1" class="cn.osxm.ssmi.com.Foo"/><!--定义一个Foo类的bean-->
+    <bean id="requiredAnno" class="cn.osxm.ssmi.chp05.anno.RequiredAnno">
+        <property name="foo" ref="foo1"/><!--将依赖项注入-->
+    </bean>
+
+    <bean id="autowiredUsage" class="cn.osxm.ssmi.chp05.anno.AutowiredUsage"/>
+</beans>

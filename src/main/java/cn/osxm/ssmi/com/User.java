@@ -12,6 +12,14 @@ public class User {
         this.name = name;
     }
 
+    private void userInit() {
+        System.out.println("初始化");
+    }
+
+    private void userDestroy() {
+        System.out.println("销毁");
+    }
+
     public void setAge(Integer age) {
         this.age = age;
     }
