@@ -4,10 +4,12 @@ import cn.osxm.ssmi.chp04.model.Bar;
 import cn.osxm.ssmi.chp05.Notice;
 import cn.osxm.ssmi.com.Baz;
 import cn.osxm.ssmi.com.Foo;
+import cn.osxm.ssmi.com.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -47,4 +49,7 @@ public class AutowiredUsage {
     @Autowired
     @Qualifier("mailNotice")
     private Notice notice;
+
+    @Autowired
+    private List<User> userList;
 }

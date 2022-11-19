@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Description;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -23,10 +24,18 @@ public class Foo {
     }
 
     @Bean       //组件注解
-    //如果
+    //如果User类对应的Bean在容器中有多个，其他Bean实例使用这个进行依赖注入
     @Primary
     public User secondUser() {
         return new User("second");
     }
+
+    @Bean
+    @Order(1)
+    public User thirdUser() {
+        return new User("third");
+    }
+
+
 
 }

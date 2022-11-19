@@ -1,6 +1,8 @@
 package cn.osxm.ssmi.chp05.anno;
 
 import cn.osxm.ssmi.chp04.Chp04Demo;
+import cn.osxm.ssmi.chp04.model.Bar;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.lang.annotation.Annotation;
@@ -33,5 +35,13 @@ public class MyAnnotationDemo {
         if (annoMethod.isAnnotationPresent(MyAnnotation.class)) {
             System.out.println("方法添加了 MyAnnotation 注解，再干点其他事......");
         }
+
+        AnnotationConfigApplicationContext  context = new AnnotationConfigApplicationContext(AppConfig.class);
+        System.out.println(context.getBean("foo"));
+        context.register(Bar.class);
+        context.refresh();
+
+        context.scan("cn.osxm.ssmi.com.chp05");
+        context.refresh();
     }
 }
